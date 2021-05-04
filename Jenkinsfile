@@ -21,5 +21,13 @@ pipeline {
                 	'Cucumber Tests': {sh '/opt/gradle/gradle-6.2.2/bin/gradle cucumber'})
 	    }		
 	}
+ 	stage('Trigger') {
+		steps{
+			build job: "children1-job", parameters: [string(name: 'BRANCH_NAME', value: 'volodya')], wait: true
+		step ([$class: 'CopyArtifact',
+                projectName: 'children1-job',
+                filter: 'volodya_dsl_script.tar.gz']);
+		}	
+	}
     }
 }
