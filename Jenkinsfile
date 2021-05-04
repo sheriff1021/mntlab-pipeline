@@ -10,8 +10,7 @@ pipeline {
         }
         stage('Build stage') {
             steps{
-                sh 'cd /opt/gradle/gradle-7.0/bin'
-		sh './gradle build'
+                sh '/opt/gradle/gradle-7.0/bin/gradle build'
             }            
         }
     }
