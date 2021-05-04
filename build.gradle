@@ -58,14 +58,14 @@ artifacts {
 }
 jacoco {
     toolVersion = "0.7.6.201602180812"
-    reportsDir = file("$buildDir/reports")
+    reportsDir = file("$buildDir/reports/jacoco")
 }
 
 jacocoTestReport {
     reports {
         xml.enabled false
         csv.enabled false
-        html.destination "${buildDir}/reports"
+        html.destination "${buildDir}/reports/coverage"
     }
 }
 // To specify a license in the pom:
