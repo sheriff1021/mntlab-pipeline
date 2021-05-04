@@ -16,9 +16,9 @@ pipeline {
 	stage('Testing') {
 	    steps{
 	    	 parallel(
-			'Unit Tests': {sh '/opt/gradle/bin/gradle test' },
-                	'Jacoco Tests': {sh '/opt/gradle/bin/gradle jacocoTestReport' },
-                	'Cucumber Tests': {sh '/opt/gradle/bin/gradle cucumber' })
+			'Unit Tests': {sh '/opt/gradle/gradle-6.2.2/bin/gradle test'},
+                	'Jacoco Tests': {sh '/opt/gradle/bin/gradle-6.2.2/gradle jacocoTestReport' },
+                	'Cucumber Tests': {sh '/opt/gradle/gradle-6.2.2/bin/gradle cucumber'})
 	    }		
 	}
     }
