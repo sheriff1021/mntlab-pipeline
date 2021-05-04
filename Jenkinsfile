@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build stage') {
             steps{
-                sh '/opt/gradle/gradle-6.2.2/bin/gradle build'
+                sh '/opt/gradle/gradle-6.2.2/bin/gradle build>log.txt'
             }            
         }
     }
