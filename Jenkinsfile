@@ -17,7 +17,7 @@ pipeline {
 	    steps{
 	    	 parallel(
 			'Unit Tests': {sh '/opt/gradle/gradle-6.2.2/bin/gradle test'},
-                	'Jacoco Tests': {sh '/opt/gradle/bin/gradle-6.2.2/gradle jacocoTestReport' },
+                	'Jacoco Tests': {sh '/opt/gradle/gradle-6.2.2/bin/gradle jacocoTestReport' },
                 	'Cucumber Tests': {sh '/opt/gradle/gradle-6.2.2/bin/gradle cucumber'})
 	    }		
 	}
