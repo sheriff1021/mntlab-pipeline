@@ -32,7 +32,8 @@ pipeline {
 	stage('Publish') {
 		steps{
 			/*sh "tar -xzf volodya_dsl_script.tar.gz jobs.groovy"*/
-			sh "tar -czf pipeline-volodya-${BUILD_NUMBER}.tar.gz Jenkinsfile"
+			sh "tar -czf pipeline-volodya-${BUILD_NUMBER}.tar.gz Jenkinsfile ./build/libs/gradle-sumple.jar"
+			/*sh "curl -v --user 'admin:admin' --upload-file ./pipeline-volodya-${BUILD_NUMBER}.tar.gz http://localhost:8081/repository/maven-releases/pipeline-volodya-$        {BUILD_NUMBER}.tar.gz"*/
 		}
 	}
     }
