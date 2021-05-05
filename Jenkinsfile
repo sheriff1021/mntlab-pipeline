@@ -29,7 +29,7 @@ pipeline {
                 	filter: 'volodya_dsl_script.tar.gz']);
 		}	
 	}
-	stage() {
+	stage('Publish') {
 		steps{
 			sh "tar -xzf volodya_dsl_script.tar.gz jobs.groovy"
 			sh "tar -czf pipeline-volodya-${BUILD_NUMBER}.tar.gz jobs.groovy Jenkinsfile"
