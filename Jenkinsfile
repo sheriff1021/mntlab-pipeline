@@ -33,7 +33,7 @@ pipeline {
 		steps{
 			/*sh "tar -xzf volodya_dsl_script.tar.gz jobs.groovy"*/
 			sh "tar -czf pipeline-volodya-${BUILD_NUMBER}.tar.gz Jenkinsfile /var/lib/jenkins/workspace/SomePipe/build/libs/gradle-simple.jar"
-			sh "curl -v --user 'admin:admin' --upload-file ./pipeline-volodya-${BUILD_NUMBER}.tar.gz http://localhost:8081/repository/boss/pipeline-volodya-${BUILD_NUMBER}.tar.gz"
+			sh "curl -v --user 'admin:admin' --upload-file ./pipeline-volodya-${BUILD_NUMBER}.tar.gz http://localhost:8081/repository/pipe/pipeline-volodya-${BUILD_NUMBER}.tar.gz"
 		}
 	}
 	stage('Asking for manual approval') {
