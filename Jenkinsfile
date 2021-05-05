@@ -24,15 +24,16 @@ pipeline {
  	stage('Trigger') {
 		steps{
 			build job: "children1-job", parameters: [string(name: 'BRANCH_NAME', value: 'volodya')], wait: true
-		step ([$class: 'CopyArtifact',
-                projectName: 'children1-job',
-                filter: 'volodya_dsl_script.tar.gz']);
+			step ([$class: 'CopyArtifact',
+                	projectName: 'children1-job',
+                	filter: 'volodya_dsl_script.tar.gz']);
 		}	
 	}
 	stage() {
-		sh "tar -xzf volodya_dsl_script.tar.gz jobs.groovy"
-		sh "tar -czf pipeline-volodya-${BUILD_NUMBER}.tar.gz jobs.groovy Jenkinsfile"
-	
+		steps{
+			sh "tar -xzf volodya_dsl_script.tar.gz jobs.groovy"
+			sh "tar -czf pipeline-volodya-${BUILD_NUMBER}.tar.gz jobs.groovy Jenkinsfile"
+		}
 	}
     }
 }
