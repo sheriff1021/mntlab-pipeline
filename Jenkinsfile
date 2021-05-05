@@ -8,12 +8,12 @@ pipeline {
                 git ([url: 'https://github.com/sheriff1021/mntlab-pipeline.git', branch: 'volodya'])
             }
         }
-        stage('Build stage') {
+        stage('Build') {
             steps{
                 sh '/opt/gradle/gradle-6.2.2/bin/gradle build'
             }            
         }
-	stage('Testing') {
+	stage('Test') {
 	    steps{
 	    	 parallel(
 			'Unit Tests': {sh '/opt/gradle/gradle-6.2.2/bin/gradle test'},
@@ -28,6 +28,11 @@ pipeline {
                 projectName: 'children1-job',
                 filter: 'volodya_dsl_script.tar.gz']);
 		}	
+	}
+	stage() {
+		sh "tar -xzf volodya_dsl_script.tar.gz jobs.groovy"
+		sh "tar -czf pipeline-volodya-${BUILD_NUMBER}.tar.gz jobs.groovy Jenkinsfile"
+	
 	}
     }
 }
